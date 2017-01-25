@@ -22,23 +22,18 @@ lazy val root = project.in(file("."))
   .settings(
     libraryDependencies ++= Seq(
       // Java
-      Dependencies.Libraries.hadoopCommon,
-      Dependencies.Libraries.hadoopClientCore,
-      Dependencies.Libraries.cascadingCore,
-      Dependencies.Libraries.cascadingLocal,
-      Dependencies.Libraries.cascadingHadoop,
+      Dependencies.Libraries.hadoopLZO,
+      Dependencies.Libraries.elephantBird,
       // Scala
-      Dependencies.Libraries.scaldingCore,
-      Dependencies.Libraries.scaldingArgs,
-      Dependencies.Libraries.scaldingCommons,
-      Dependencies.Libraries.scaldingJson,
+      Dependencies.Libraries.sparkCore,
+      Dependencies.Libraries.sparkSQL,
       Dependencies.Libraries.scalaz7,
+      Dependencies.Libraries.scopt,
       Dependencies.Libraries.commonEnrich,
       Dependencies.Libraries.igluClient,
       // Scala (test only)
       Dependencies.Libraries.specs2,
       Dependencies.Libraries.scalazSpecs2,
-      Dependencies.Libraries.compress,
       Dependencies.Libraries.commonsCodec,
       // Thrift (test only)
       Dependencies.Libraries.snowplowRawEvent,

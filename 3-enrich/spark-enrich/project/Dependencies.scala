@@ -17,16 +17,21 @@ object Dependencies {
   val resolutionRepos = Seq(
     // For Snowplow libs
     "Snowplow Analytics Maven repo" at "http://maven.snplow.com/releases/",
-    "Snowplow Analytics Maven snapshot repo" at "http://maven.snplow.com/snapshots/"
+    "Snowplow Analytics Maven snapshot repo" at "http://maven.snplow.com/snapshots/",
+    // For user-agent-utils
+    "Clojars Maven Repo" at "http://clojars.org/repo",
+    // For hadoop-lzo
+    "Twitter" at "http://maven.twttr.com/"
   )
 
   object V {
     // Java
-    val hadoop           = "2.4.1"
-    val cascading        = "2.6.0"
+    val hadoopLZO        = "0.4.20"
+    val elephantBird     = "4.14"
     // Scala
-    val scalding         = "0.11.2"
+    val spark            = "2.1.0"
     val scalaz7          = "7.0.0"
+    val scopt            = "3.5.0"
     val commonEnrich     = "0.24.0"
     val igluClient       = "0.4.0"
     // Scala (test only)
@@ -41,23 +46,18 @@ object Dependencies {
 
   object Libraries {
     // Java
-    val hadoopCommon     = "org.apache.hadoop"         %  "hadoop-common"                % V.hadoop       % "provided"
-    val hadoopClientCore = "org.apache.hadoop"         %  "hadoop-mapreduce-client-core" % V.hadoop       % "provided"
-    val cascadingCore    = "cascading"                 %  "cascading-core"               % V.cascading
-    val cascadingLocal   = "cascading"                 %  "cascading-local"              % V.cascading
-    val cascadingHadoop  = "cascading"                 %  "cascading-hadoop2-mr1"        % V.cascading
+    val hadoopLZO        = "com.hadoop.gplcompression" %  "hadoop-lzo"                   % V.hadoopLZO
+    val elephantBird     = "com.twitter.elephantbird"  %  "elephant-bird-core"           % V.elephantBird
     // Scala
-    val scaldingCore     = "com.twitter"               %% "scalding-core"                % V.scalding exclude( "cascading", "cascading-local" ) exclude( "cascading", "cascading-hadoop" )
-    val scaldingArgs     = "com.twitter"               %% "scalding-args"                % V.scalding exclude( "cascading", "cascading-local" ) exclude( "cascading", "cascading-hadoop" )
-    val scaldingCommons  = "com.twitter"               %% "scalding-commons"             % V.scalding exclude( "cascading", "cascading-local" ) exclude( "cascading", "cascading-hadoop" )
-    val scaldingJson     = "com.twitter"               %% "scalding-json"                % V.scalding exclude( "cascading", "cascading-local" ) exclude( "cascading", "cascading-hadoop" )
+    val sparkCore        = "org.apache.spark"          %% "spark-core"                   % V.spark        % "provided"
+    val sparkSQL         = "org.apache.spark"          %% "spark-sql"                    % V.spark        % "provided"
     val scalaz7          = "org.scalaz"                %% "scalaz-core"                  % V.scalaz7
+    val scopt            = "com.github.scopt"          %% "scopt"                        % V.scopt
     val commonEnrich     = "com.snowplowanalytics"     %  "snowplow-common-enrich"       % V.commonEnrich
     val igluClient       = "com.snowplowanalytics"     %% "iglu-scala-client"            % V.igluClient
     // Scala (test only)
     val specs2           = "org.specs2"                %% "specs2"                       % V.specs2       % "test"
     val scalazSpecs2     = "org.typelevel"             %% "scalaz-specs2"                % V.scalazSpecs2 % "test"
-    val compress         = "com.hadoop.gplcompression" %  "hadoop-lzo"                   % V.compress
     val commonsCodec     = "commons-codec"             %  "commons-codec"                % V.commonsCodec % "test"
     // Thrift (test only)
     val snowplowRawEvent = "com.snowplowanalytics"     % "snowplow-thrift-raw-event"     % V.snowplowRawEvent
